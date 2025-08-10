@@ -20,7 +20,8 @@ private:
 
   // data handles (not owned)
   std::vector<GraphEdge*> _parentEdges; // edges to preceding nodes
-  ChatBot* _chatBot;
+
+  ChatBot _chatBot;
 
   ////
   //// EOF STUDENT CODE
@@ -56,12 +57,12 @@ public:
   // proprietary functions
   void AddToken(std::string token); // add answers to list
   void AddEdgeToParentNode(GraphEdge* edge);
-  void AddEdgeToChildNode(std::unique_ptr<GraphEdge>&& edge); // ownership transfers to this
+  void AddEdgeToChildNode(std::unique_ptr<GraphEdge> edge); // ownership transfers to this
 
   //// STUDENT CODE
   ////
 
-  void MoveChatbotHere(ChatBot* chatbot);
+  void MoveChatbotHere(ChatBot chatbot);
 
   ////
   //// EOF STUDENT CODE

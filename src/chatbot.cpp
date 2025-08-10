@@ -64,6 +64,7 @@ ChatBot::ChatBot(ChatBot&& src) noexcept
 {
   std::cout << "ChatBot Move Constructor" << std::endl;
   swap(src);
+  _chatLogic->SetChatbotHandle(this);
 }
 
 ChatBot& ChatBot::operator=(ChatBot&& src) noexcept
@@ -73,6 +74,7 @@ ChatBot& ChatBot::operator=(ChatBot&& src) noexcept
     return *this;
   }
   swap(src);
+  _chatLogic->SetChatbotHandle(this);
   return *this;
 }
 
