@@ -42,11 +42,12 @@ ChatBot::ChatBot(const ChatBot& src)
 {
   std::cout << "ChatBot Copy Constructor" << std::endl;
   if (src._image) {
-    *_image = *src._image;
+    _image = std::make_unique<wxBitmap>(*src._image);
   }
   _currentNode = src._currentNode;
   _rootNode = src._rootNode;
   _chatLogic = src._chatLogic;
+  _chatLogic->SetChatbotHandle(this);
 }
 
 ChatBot& ChatBot::operator=(const ChatBot& src)
@@ -57,6 +58,7 @@ ChatBot& ChatBot::operator=(const ChatBot& src)
   }
   ChatBot tmp{src};
   swap(tmp);
+  _chatLogic->SetChatbotHandle(this);
   return *this;
 }
 
