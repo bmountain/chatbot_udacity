@@ -2,6 +2,7 @@
 #define CHATLOGIC_H_
 
 #include "chatgui.h"
+#include <memory>
 #include <string>
 #include <vector>
 
@@ -17,7 +18,7 @@ private:
   ////
 
   // data handles (owned)
-  std::vector<GraphNode*> _nodes;
+  std::vector<std::unique_ptr<GraphNode>> _nodes;
   std::vector<GraphEdge*> _edges;
 
   ////
